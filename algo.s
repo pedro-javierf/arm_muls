@@ -16,6 +16,8 @@ RESULT:         .space 32			@ Single Point result (32 bits)
 multiply: 
 
   @prologue
+  stmfd sp!,{r4,r5,r6,r7,r9,r10,r11,lr}
+  
   //Check for any of the two operands to be zero
   cmp r0, #0
   beq zeroReturn
@@ -96,6 +98,7 @@ multiply:
 
 
   end:  @epilogue
+  ldmfd sp!,{r4,r5,r6,r7,r9,r10,r11,pc}
 
 
 
